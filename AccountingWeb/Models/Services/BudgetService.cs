@@ -41,12 +41,7 @@ namespace AccountingWeb.Models.Services
 
             var budget = budgets.First();
             var period = new Period(start, end);
-            return OverlappingAmount(period, budget);
-        }
-
-        private static decimal OverlappingAmount(Period period, Budget budget)
-        {
-            return period.OverlappingDays(budget.CreatePeriod()) * budget.DailyAmount();
+            return budget.OverlappingAmount(period);
         }
     }
 }

@@ -56,5 +56,10 @@ namespace AccountingWeb.Models.Entities
         {
             return Amount / Days;
         }
+
+        public decimal OverlappingAmount(Period period)
+        {
+            return period.OverlappingDays(CreatePeriod()) * DailyAmount();
+        }
     }
 }
