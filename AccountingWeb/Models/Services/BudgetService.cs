@@ -39,6 +39,10 @@ namespace AccountingWeb.Models.Services
             if (budgets.Any())
             {
                 var budget = budgets.First();
+                if (start > budget.LastDay)
+                {
+                    return 0;
+                }
                 if (end < budget.FirstDay)
                 {
                     return 0;
