@@ -9,11 +9,19 @@ namespace AccountingWeb.Models.Services
         {
             using (var dbContext = new AccountingEntities())
             {
-                dbContext.Budgets.Add(new Budget() { YearMonth = yearMonth, Amount = amount });
+                var budget = dbContext.Budgets.Find(yearMonth);
+                var isBudgetExisted = budget != null;
+                if (isBudgetExisted)
+                {
+                    budget.Amount = amount;
+                }
+                else
+                {
+                    dbContext.Budgets.Add(new Budget() { YearMonth = yearMonth, Amount = amount });
+                }
                 dbContext.SaveChanges();
-            }
-
-            return false;
+                return isBudgetExisted;
+            } 
         }
     }
 }
