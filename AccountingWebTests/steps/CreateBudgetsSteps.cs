@@ -14,7 +14,6 @@ namespace AccountingWebTests.steps
     {
         private static CreateBudgetsPage _createBudgetsPage;
         private CreateBudgetResultPage _createBudgetResultPage;
-        private readonly TableInitialization _tableInitialization = new TableInitialization();
 
         [BeforeScenario]
         public static void SetUpScenario()

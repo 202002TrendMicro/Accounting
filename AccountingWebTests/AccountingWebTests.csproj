@@ -145,6 +145,7 @@
     <Compile Include="steps\CreateBudgetsSteps.cs" />
     <Compile Include="steps\QueryBudgetsSteps.cs" />
     <Compile Include="Utilities\AtataSetup.cs" />
+    <Compile Include="Utilities\TableInitialization.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

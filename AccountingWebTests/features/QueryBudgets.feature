@@ -6,3 +6,10 @@
 Scenario: no budgets
 	When I query between "20200301" and "20200301"
 	Then the total amount should be 0.00
+
+Scenario: query period inside budget month
+	Given there are budgets
+		| YearMonth | Amount |
+		| 202003    | 31     |
+	When I query between "20200301" and "20200301"
+	Then the total amount should be 1.00

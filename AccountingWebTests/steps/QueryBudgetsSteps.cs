@@ -1,4 +1,5 @@
-﻿using AccountingWebTests.PageObjects;
+﻿using AccountingWebTests.DataModels;
+using AccountingWebTests.PageObjects;
 using Atata;
 using TechTalk.SpecFlow;
 
@@ -13,6 +14,11 @@ namespace AccountingWebTests.steps
         [BeforeScenario()]
         public static void SetUpScenario()
         {
+            using (var dbContext = new AccountingEntitiesForTest())
+            {
+                dbContext.Database.ExecuteSqlCommand("TRUNCATE TABLE [Budgets]");
+            }
+
             _queryBudgetsPage = Go.To<QueryBudgetsPage>();
         }
 
