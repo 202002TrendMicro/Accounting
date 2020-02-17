@@ -44,8 +44,7 @@ namespace AccountingWeb.Models.Services
                 return 0;
             }
 
-            return (end - start).Days + 1;
-
+            return (end - start).Days + 1; 
         }
     }
 }
