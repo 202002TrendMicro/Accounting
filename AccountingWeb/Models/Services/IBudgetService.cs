@@ -2,6 +2,6 @@
 {
     public interface IBudgetService
     {
-        void Save(string yearMonth, decimal amount);
+        bool Save(string yearMonth, decimal amount);
     }
 }

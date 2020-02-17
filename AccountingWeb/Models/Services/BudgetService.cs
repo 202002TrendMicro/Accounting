@@ -5,13 +5,15 @@ namespace AccountingWeb.Models.Services
 {
     public class BudgetService : IBudgetService
     {
-        public void Save(string yearMonth, decimal amount)
+        public bool Save(string yearMonth, decimal amount)
         {
             using (var dbContext = new AccountingEntities())
             {
                 dbContext.Budgets.Add(new Budget() { YearMonth = yearMonth, Amount = amount });
                 dbContext.SaveChanges();
-            } 
+            }
+
+            return false;
         }
     }
 }

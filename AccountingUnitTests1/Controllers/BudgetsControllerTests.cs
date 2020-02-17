@@ -23,7 +23,7 @@ namespace AccountingUnitTests1.Controllers
         [Test()]
         public void create_a_budget_should_invoke_budgetService_save()
         {
-            _budgetsController.CreateBudgets("202003", 31m); 
+            _budgetsController.CreateBudgets("202003", 31m);
             _budgetService.Received().Save("202003", 31m);
         }
 
@@ -32,6 +32,16 @@ namespace AccountingUnitTests1.Controllers
         {
             var viewResult = _budgetsController.CreateBudgets("202003", 31m) as ViewResult;
             (viewResult.ViewBag.Status as string).Should().ContainAll("created", "succeed");
+        }
+
+        [Test]
+        public void update_the_budget_when_budget_existed()
+        {
+            _budgetService.Save(Arg.Any<string>(), Arg.Any<decimal>())
+                          .ReturnsForAnyArgs(true);
+
+            var viewResult = _budgetsController.CreateBudgets("202003", 31m) as ViewResult;
+            (viewResult.ViewBag.Status as string).Should().ContainAll("updated", "succeed");
         }
     }
 }
