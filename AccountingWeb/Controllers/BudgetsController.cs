@@ -25,8 +25,8 @@ namespace AccountingWeb.Controllers
         [HttpPost]
         public ActionResult CreateBudgets(string yearMonth, decimal amount)
         {
+            _budgetService.Save(yearMonth, amount); 
             return View();
-        }
-
+        } 
     }
 }
