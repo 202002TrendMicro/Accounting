@@ -24,6 +24,7 @@ namespace AccountingUnitTests1.Models.Services
         [Test()]
         public void query_budget_when_no_budgets()
         {
+            _budgetRepo.GetAll().ReturnsForAnyArgs(new List<Budget>());
             TotalAmountShouldBe(0m,
                                 new DateTime(2020, 3, 1),
                                 new DateTime(2020, 3, 1));

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using AccountingWeb.Models.Entities;
 
 namespace AccountingWeb.Models.Services
@@ -24,15 +25,22 @@ namespace AccountingWeb.Models.Services
                 }
                 else
                 {
-                    dbContext.Budgets.Add(new Budget() { YearMonth = yearMonth, Amount = amount });
+                    dbContext.Budgets.Add(new Budget() {YearMonth = yearMonth, Amount = amount});
                 }
+
                 dbContext.SaveChanges();
                 return isBudgetExisted;
-            } 
+            }
         }
 
         public decimal TotalAmount(DateTime start, DateTime end)
         {
+            var budgets = _budgetRepo.GetAll();
+            if (budgets.Any())
+            {
+                return (end - start).Days + 1;
+            }
+
             return 0;
         }
     }
