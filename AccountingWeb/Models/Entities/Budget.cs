@@ -16,5 +16,13 @@ namespace AccountingWeb.Models.Entities
     {
         public string YearMonth { get; set; }
         public decimal Amount { get; set; }
+
+        public DateTime FirstDay
+        {
+            get
+            {
+                return DateTime.ParseExact(YearMonth + "01", "yyyyMMdd", null);
+            }
+        }
     }
 }

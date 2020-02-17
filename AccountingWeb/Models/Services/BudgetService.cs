@@ -38,6 +38,12 @@ namespace AccountingWeb.Models.Services
             var budgets = _budgetRepo.GetAll();
             if (budgets.Any())
             {
+                var budget = budgets.First();
+                if (end < budget.FirstDay)
+                {
+                    return 0;
+                }
+
                 return (end - start).Days + 1;
             }
 
