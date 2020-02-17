@@ -39,6 +39,11 @@ namespace AccountingWeb.Models.Services
             if (!budgets.Any()) return 0;
 
             var budget = budgets.First();
+            return OverlappingDays(start, end, budget);
+        }
+
+        private static decimal OverlappingDays(DateTime start, DateTime end, Budget budget)
+        {
             if (start > budget.LastDay || end < budget.FirstDay)
             {
                 return 0;
@@ -46,7 +51,7 @@ namespace AccountingWeb.Models.Services
 
             var overlappingStart = start > budget.FirstDay ? start : budget.FirstDay;
             var overlappingEnd = end < budget.LastDay ? end : budget.LastDay;
-            return (overlappingEnd - overlappingStart).Days + 1; 
+            return (overlappingEnd - overlappingStart).Days + 1;
         }
     }
 }
