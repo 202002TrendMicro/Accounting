@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using AccountingWeb.Controllers;
+using AccountingWeb.Models.Services;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace AccountingUnitTests1.Controllers
 {
@@ -6,9 +9,14 @@ namespace AccountingUnitTests1.Controllers
     public class BudgetsControllerTests
     {
         [Test()]
-        public void CreateBudgetsTest()
+        public void create_a_budget_should_invoke_budgetService_save()
         {
-            Assert.Fail();
+            var budgetService = Substitute.For<IBudgetService>();
+
+            var budgetsController = new BudgetsController(budgetService);
+            budgetsController.CreateBudgets("202003", 31m);
+
+            budgetService.Received().Save("202003", 31m);
         }
     }
 }
