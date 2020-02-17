@@ -179,8 +179,10 @@
       <DependentUpon>AccountingEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Services\BudgetService.cs" />
+    <Compile Include="Models\Services\IBudgetRepo.cs" />
     <Compile Include="Models\Services\IBudgetService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\BudgetRepo.cs" />
     <Compile Include="ViewModels\QueryBudgetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

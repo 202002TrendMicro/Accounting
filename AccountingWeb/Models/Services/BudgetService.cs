@@ -5,6 +5,13 @@ namespace AccountingWeb.Models.Services
 {
     public class BudgetService : IBudgetService
     {
+        private readonly IBudgetRepo _budgetRepo;
+
+        public BudgetService(IBudgetRepo budgetRepo)
+        {
+            _budgetRepo = budgetRepo;
+        }
+
         public bool Save(string yearMonth, decimal amount)
         {
             using (var dbContext = new AccountingEntities())

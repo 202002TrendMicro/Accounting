@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AccountingWeb.Models.Services;
+using AccountingWeb.Repos;
 using AccountingWeb.ViewModels;
 
 namespace AccountingWeb.Controllers
@@ -14,7 +15,7 @@ namespace AccountingWeb.Controllers
 
         public BudgetsController()
         {
-            _budgetService = new BudgetService();
+            _budgetService = new BudgetService(new BudgetRepo());
         }
 
         public BudgetsController(IBudgetService budgetService)
