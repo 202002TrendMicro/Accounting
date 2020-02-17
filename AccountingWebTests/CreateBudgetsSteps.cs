@@ -17,14 +17,10 @@ namespace AccountingWebTests
         [BeforeTestRun]
         public static void SetUpTestRun()
         {
-            AtataContext.
-                GlobalConfiguration.
-                UseChrome().
-                //WithArguments("start-maximized").
-                WithLocalDriverPath().
-                UseBaseUrl("http://localhost:50564/").
-                UseCulture("en-us").
-                UseAllNUnitFeatures();
+            AtataContext.GlobalConfiguration.UseChrome().
+                         //WithArguments("start-maximized").
+                         WithLocalDriverPath().UseBaseUrl("http://localhost:50564/").UseCulture("en-us")
+                         .UseAllNUnitFeatures();
         }
 
         [BeforeScenario]
