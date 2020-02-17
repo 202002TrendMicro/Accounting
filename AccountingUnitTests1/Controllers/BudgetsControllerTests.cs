@@ -48,15 +48,24 @@ namespace AccountingUnitTests1.Controllers
         [Test]
         public void query_budget()
         {
-            _budgetService.TotalAmount(new DateTime(2020, 3, 1), new DateTime(2020, 3, 1))
-                          .ReturnsForAnyArgs(1m);
+            GivenTotalAmount(1m);
 
-            var viewResult =
-                _budgetsController.Query(new QueryBudgetViewModel()
-                { Start = "20200301", End = "20200301" }) as ViewResult;
+            var viewResult = WhenQueryBudget("20200301", "20200301");
 
             (viewResult.Model as QueryBudgetViewModel).Amount.Should().Be(1m);
         }
+
+        private ViewResult WhenQueryBudget(string start, string end)
+        {
+            return _budgetsController.Query(new QueryBudgetViewModel() {Start = start, End = end}) as ViewResult;
+        }
+
+        private void GivenTotalAmount(decimal totalAmount)
+        {
+            _budgetService.TotalAmount(new DateTime(2020, 3, 1), new DateTime(2020, 3, 1))
+                          .ReturnsForAnyArgs(totalAmount);
+        }
+
         private static void StatusShouldContainAll(ViewResult viewResult, params string[] contents)
         {
             (viewResult.ViewBag.Status as string).Should().ContainAll(contents);
