@@ -179,6 +179,7 @@
     <Compile Include="Models\Entities\Budget.cs">
       <DependentUpon>AccountingEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\BudgetPartial.cs" />
     <Compile Include="Models\Services\BudgetService.cs" />
     <Compile Include="Models\Services\IBudgetRepo.cs" />
     <Compile Include="Models\Services\IBudgetService.cs" />

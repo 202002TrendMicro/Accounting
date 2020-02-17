@@ -17,49 +17,6 @@ namespace AccountingWeb.Models.Entities
     public partial class Budget
     {
         public string YearMonth { get; set; }
-        public decimal Amount { get; set; }
-
-        public DateTime FirstDay
-        {
-            get
-            {
-                return DateTime.ParseExact(YearMonth + "01", "yyyyMMdd", null);
-            }
-        }
-
-        public DateTime LastDay
-        {
-            get
-            {
-                var daysInMonth = DaysInMonth();
-                return DateTime.ParseExact(YearMonth + daysInMonth, "yyyyMMdd", null);
-            }
-        }
-
-        private int DaysInMonth()
-        {
-            var daysInMonth = DateTime.DaysInMonth(FirstDay.Year, FirstDay.Month);
-            return daysInMonth;
-        }
-
-        public decimal Days
-        {
-            get { return DaysInMonth(); }
-        }
-
-        public Period CreatePeriod()
-        {
-            return new Period(FirstDay, LastDay);
-        }
-
-        public decimal DailyAmount()
-        {
-            return Amount / Days;
-        }
-
-        public decimal OverlappingAmount(Period period)
-        {
-            return period.OverlappingDays(CreatePeriod()) * DailyAmount();
-        }
+        public decimal Amount { get; set; } 
     }
 }
