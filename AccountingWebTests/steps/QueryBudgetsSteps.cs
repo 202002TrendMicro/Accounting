@@ -16,16 +16,16 @@ namespace AccountingWebTests.steps
             _queryBudgetsPage = Go.To<QueryBudgetsPage>();
         }
 
-        [When(@"I query between ""(.*)"" and ""(.*)""")]
-        public void WhenIQueryBetweenAnd(string start, string end)
-        {
-            _queryBudgetsPage.Query(start, end);
-        }
-
         [Then(@"the total amount should be (.*)")]
         public void ThenTheTotalAmountShouldBe(string expectedAmount)
         {
             _queryBudgetsPage.Amount.Should.Equal(expectedAmount);
+        }
+
+        [When(@"I query between ""(.*)"" and ""(.*)""")]
+        public void WhenIQueryBetweenAnd(string start, string end)
+        {
+            _queryBudgetsPage.Query(start, end);
         }
     }
 }

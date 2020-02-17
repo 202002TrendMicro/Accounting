@@ -76,11 +76,14 @@ namespace AccountingWebTests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("no budgets")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void NoBudgets()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("no budgets", null, ((string[])(null)));
-#line 6
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("no budgets", null, new string[] {
+                        "CleanBudgets"});
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -100,10 +103,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 8
  testRunner.When("I query between \"20200301\" and \"20200301\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 8
+#line 9
  testRunner.Then("the total amount should be 0.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -112,11 +115,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("query period inside budget month")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void QueryPeriodInsideBudgetMonth()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query period inside budget month", null, ((string[])(null)));
-#line 10
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query period inside budget month", null, new string[] {
+                        "CleanBudgets"});
+#line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -142,13 +148,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table6.AddRow(new string[] {
                             "202003",
                             "31"});
-#line 11
+#line 13
  testRunner.Given("there are budgets", ((string)(null)), table6, "Given ");
 #line hidden
-#line 14
+#line 16
  testRunner.When("I query between \"20200301\" and \"20200301\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
+#line 17
  testRunner.Then("the total amount should be 1.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -157,11 +163,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("query when period without overlapping before budget first day")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void QueryWhenPeriodWithoutOverlappingBeforeBudgetFirstDay()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query when period without overlapping before budget first day", null, ((string[])(null)));
-#line 17
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query when period without overlapping before budget first day", null, new string[] {
+                        "CleanBudgets"});
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -187,13 +196,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table7.AddRow(new string[] {
                             "202003",
                             "31"});
-#line 18
+#line 21
  testRunner.Given("there are budgets", ((string)(null)), table7, "Given ");
 #line hidden
-#line 21
+#line 24
  testRunner.When("I query between \"20200201\" and \"20200201\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 25
  testRunner.Then("the total amount should be 0.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -202,11 +211,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("query when period without overlapping after budget last day")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void QueryWhenPeriodWithoutOverlappingAfterBudgetLastDay()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query when period without overlapping after budget last day", null, ((string[])(null)));
-#line 24
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query when period without overlapping after budget last day", null, new string[] {
+                        "CleanBudgets"});
+#line 28
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -232,13 +244,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table8.AddRow(new string[] {
                             "202003",
                             "31"});
-#line 25
+#line 29
  testRunner.Given("there are budgets", ((string)(null)), table8, "Given ");
 #line hidden
-#line 28
+#line 32
  testRunner.When("I query between \"20200401\" and \"20200401\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 29
+#line 33
  testRunner.Then("the total amount should be 0.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -247,11 +259,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("query when period overlapping budget first day")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void QueryWhenPeriodOverlappingBudgetFirstDay()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query when period overlapping budget first day", null, ((string[])(null)));
-#line 31
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query when period overlapping budget first day", null, new string[] {
+                        "CleanBudgets"});
+#line 36
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -277,13 +292,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table9.AddRow(new string[] {
                             "202003",
                             "31"});
-#line 32
+#line 37
  testRunner.Given("there are budgets", ((string)(null)), table9, "Given ");
 #line hidden
-#line 35
+#line 40
  testRunner.When("I query between \"20200228\" and \"20200301\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 36
+#line 41
  testRunner.Then("the total amount should be 1.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -292,11 +307,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("query when period overlapping budget last day")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void QueryWhenPeriodOverlappingBudgetLastDay()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query when period overlapping budget last day", null, ((string[])(null)));
-#line 38
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("query when period overlapping budget last day", null, new string[] {
+                        "CleanBudgets"});
+#line 44
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -322,13 +340,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table10.AddRow(new string[] {
                             "202003",
                             "31"});
-#line 39
+#line 45
  testRunner.Given("there are budgets", ((string)(null)), table10, "Given ");
 #line hidden
-#line 42
+#line 48
  testRunner.When("I query between \"20200331\" and \"20200501\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 43
+#line 49
  testRunner.Then("the total amount should be 1.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -337,11 +355,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("daily amount is 10")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void DailyAmountIs10()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("daily amount is 10", null, ((string[])(null)));
-#line 45
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("daily amount is 10", null, new string[] {
+                        "CleanBudgets"});
+#line 52
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -367,13 +388,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table11.AddRow(new string[] {
                             "202003",
                             "310"});
-#line 46
+#line 53
  testRunner.Given("there are budgets", ((string)(null)), table11, "Given ");
 #line hidden
-#line 49
+#line 56
  testRunner.When("I query between \"20200330\" and \"20200501\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 50
+#line 57
  testRunner.Then("the total amount should be 20.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -382,11 +403,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("multiple budgets")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void MultipleBudgets()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("multiple budgets", null, ((string[])(null)));
-#line 52
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("multiple budgets", null, new string[] {
+                        "CleanBudgets"});
+#line 60
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -418,13 +442,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table12.AddRow(new string[] {
                             "202004",
                             "3000"});
-#line 53
+#line 61
  testRunner.Given("there are budgets", ((string)(null)), table12, "Given ");
 #line hidden
-#line 58
+#line 66
  testRunner.When("I query between \"20200228\" and \"20200406\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 59
+#line 67
  testRunner.Then("the total amount should be 912.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
