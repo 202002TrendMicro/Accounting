@@ -26,7 +26,7 @@ namespace AccountingWeb.Models.Services
 
         public decimal TotalAmount(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            return 0;
         }
     }
 }
