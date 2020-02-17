@@ -41,6 +41,16 @@ namespace AccountingUnitTests1.Models.Services
                                 new DateTime(2020, 3, 1));
         }
 
+        [Test()]
+        public void query_budget_period_without_overlapping_before_budget_first_day()
+        {
+            GivenBudgets(new Budget() {YearMonth = "202003", Amount = 31});
+
+            TotalAmountShouldBe(0m,
+                                new DateTime(2020, 2, 1),
+                                new DateTime(2020, 2, 1));
+        }
+
         private void GivenBudgets(params Budget[] budgets)
         {
             _budgetRepo.GetAll().ReturnsForAnyArgs(budgets.ToList());
