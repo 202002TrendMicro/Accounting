@@ -34,10 +34,10 @@ namespace AccountingWebTests.CheckEnvironment
             using (var dbContext = new AccountingEntities())
             {
                 var amount = new Random(DateTime.Now.Millisecond).Next(0, 100);
-                dbContext.Budgets.Add(new Budget() {Amount = amount, YearMonth = "20200206"});
+                dbContext.Budgets.Add(new Budget() {Amount = amount, YearMonth = "202002"});
                 dbContext.SaveChanges();
 
-                var expected = new Budget() {Amount = amount, YearMonth = "20200206"};
+                var expected = new Budget() {Amount = amount, YearMonth = "202002"};
                 var actual = dbContext.Budgets.First();
 
                 expected.ToExpectedObject().ShouldMatch(actual);
