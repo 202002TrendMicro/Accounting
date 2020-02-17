@@ -20,3 +20,10 @@ Scenario: query when period without overlapping before budget first day
 		| 202003    | 31     |
 	When I query between "20200201" and "20200201"
 	Then the total amount should be 0.00
+
+Scenario: query when period without overlapping after budget last day
+	Given there are budgets
+		| YearMonth | Amount |
+		| 202003    | 31     |
+	When I query between "20200401" and "20200401"
+	Then the total amount should be 0.00
