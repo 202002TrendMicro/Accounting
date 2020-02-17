@@ -29,9 +29,10 @@ namespace AccountingWeb.Controllers
         [HttpPost]
         public ActionResult CreateBudgets(string yearMonth, decimal amount)
         {
-            _budgetService.Save(yearMonth, amount);
-            ViewBag.Status = "budget created succeed!";
+            var isUpdated = _budgetService.Save(yearMonth, amount);
+            ViewBag.Status = isUpdated ? "budget updated succeed!" : "budget created succeed!";
+
             return View();
-        } 
+        }
     }
 }
