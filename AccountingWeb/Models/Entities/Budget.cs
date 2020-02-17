@@ -13,7 +13,7 @@ namespace AccountingWeb.Models.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Budget
     {
         public string YearMonth { get; set; }
@@ -31,9 +31,20 @@ namespace AccountingWeb.Models.Entities
         {
             get
             {
-                var daysInMonth = DateTime.DaysInMonth(FirstDay.Year, FirstDay.Month);
-                return DateTime.ParseExact(YearMonth+daysInMonth, "yyyyMMdd", null);
+                var daysInMonth = DaysInMonth();
+                return DateTime.ParseExact(YearMonth + daysInMonth, "yyyyMMdd", null);
             }
+        }
+
+        private int DaysInMonth()
+        {
+            var daysInMonth = DateTime.DaysInMonth(FirstDay.Year, FirstDay.Month);
+            return daysInMonth;
+        }
+
+        public decimal Days
+        {
+            get { return DaysInMonth(); }
         }
 
         public Period CreatePeriod()

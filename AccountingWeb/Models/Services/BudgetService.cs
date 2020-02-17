@@ -40,8 +40,10 @@ namespace AccountingWeb.Models.Services
             if (!budgets.Any()) return 0;
 
             var budget = budgets.First();
+            var dailyAmount = budget.Amount / budget.Days;
             var period = new Period(start, end);
-            return period.OverlappingDays(budget.CreatePeriod());
+            var overlappingDays = period.OverlappingDays(budget.CreatePeriod());
+            return overlappingDays * dailyAmount;
         }
     }
 }
