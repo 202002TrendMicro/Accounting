@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AccountingWeb.Models.Entities;
 using AccountingWeb.Models.Services;
 using FluentAssertions;
@@ -24,7 +25,7 @@ namespace AccountingUnitTests1.Models.Services
         [Test()]
         public void query_budget_when_no_budgets()
         {
-            _budgetRepo.GetAll().ReturnsForAnyArgs(new List<Budget>());
+            GivenBudgets();
             TotalAmountShouldBe(0m,
                                 new DateTime(2020, 3, 1),
                                 new DateTime(2020, 3, 1));
@@ -33,14 +34,16 @@ namespace AccountingUnitTests1.Models.Services
         [Test()]
         public void query_budget_period_inside_budget_month()
         {
-            _budgetRepo.GetAll().ReturnsForAnyArgs(new List<Budget>()
-            {
-                new Budget() {YearMonth = "202003", Amount = 31},
-            });
+            GivenBudgets(new Budget() {YearMonth = "202003", Amount = 31});
 
             TotalAmountShouldBe(1m,
                                 new DateTime(2020, 3, 1),
                                 new DateTime(2020, 3, 1));
+        }
+
+        private void GivenBudgets(params Budget[] budgets)
+        {
+            _budgetRepo.GetAll().ReturnsForAnyArgs(budgets.ToList());
         }
 
         private void TotalAmountShouldBe(decimal expected, DateTime start, DateTime end)
