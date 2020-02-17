@@ -76,11 +76,14 @@ namespace AccountingWebTests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("create a budget")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void CreateABudget()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("create a budget", null, ((string[])(null)));
-#line 6
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("create a budget", null, new string[] {
+                        "CleanBudgets"});
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -106,13 +109,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table1.AddRow(new string[] {
                             "202003",
                             "31"});
-#line 7
+#line 8
  testRunner.Given("budget for setting", ((string)(null)), table1, "Given ");
 #line hidden
-#line 10
+#line 11
  testRunner.When("I create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
+#line 12
  testRunner.Then("it should be created succeed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -121,7 +124,7 @@ this.ScenarioInitialize(scenarioInfo);
                 table2.AddRow(new string[] {
                             "202003",
                             "31"});
-#line 12
+#line 13
  testRunner.And("there should be budgets existed", ((string)(null)), table2, "And ");
 #line hidden
             }
@@ -130,11 +133,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("update the budget when budget existed")]
+        [NUnit.Framework.CategoryAttribute("CleanBudgets")]
         public virtual void UpdateTheBudgetWhenBudgetExisted()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("update the budget when budget existed", null, ((string[])(null)));
-#line 16
+            string[] tagsOfScenario = new string[] {
+                    "CleanBudgets"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("update the budget when budget existed", null, new string[] {
+                        "CleanBudgets"});
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -160,7 +166,7 @@ this.ScenarioInitialize(scenarioInfo);
                 table3.AddRow(new string[] {
                             "202003",
                             "310"});
-#line 17
+#line 19
  testRunner.Given("budget for setting", ((string)(null)), table3, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -169,13 +175,13 @@ this.ScenarioInitialize(scenarioInfo);
                 table4.AddRow(new string[] {
                             "202003",
                             "31"});
-#line 20
+#line 22
  testRunner.And("there are budgets", ((string)(null)), table4, "And ");
 #line hidden
-#line 23
+#line 25
  testRunner.When("I create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 24
+#line 26
  testRunner.Then("it should be updated succeed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -184,7 +190,7 @@ this.ScenarioInitialize(scenarioInfo);
                 table5.AddRow(new string[] {
                             "202003",
                             "310"});
-#line 25
+#line 27
  testRunner.And("there should be budgets existed", ((string)(null)), table5, "And ");
 #line hidden
             }

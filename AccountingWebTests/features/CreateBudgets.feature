@@ -3,6 +3,7 @@
 	As a department manager
 	I want to set budget amount of specific year month
 
+@CleanBudgets
 Scenario: create a budget
 	Given budget for setting
 		| YearMonth | Amount |
@@ -13,6 +14,7 @@ Scenario: create a budget
 		| YearMonth | Amount |
 		| 202003    | 31     |
 
+@CleanBudgets
 Scenario: update the budget when budget existed
 	Given budget for setting
 		| YearMonth | Amount |

@@ -17,12 +17,7 @@ namespace AccountingWebTests.steps
 
         [BeforeScenario]
         public static void SetUpScenario()
-        {
-            using (var dbContext = new AccountingEntitiesForTest())
-            {
-                dbContext.Database.ExecuteSqlCommand("TRUNCATE TABLE [Budgets]");
-            }
-
+        { 
             _createBudgetsPage = Go.To<CreateBudgetsPage>();
         }
 
