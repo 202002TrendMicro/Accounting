@@ -154,6 +154,7 @@
       <DependentUpon>AccountingDataModel.edmx</DependentUpon>
     </None>
     <None Include="features\CreateBudgets.feature" />
+    <None Include="features\QueryBudgets.feature" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
