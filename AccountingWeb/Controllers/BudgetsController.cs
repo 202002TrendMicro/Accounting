@@ -37,8 +37,8 @@ namespace AccountingWeb.Controllers
         [HttpPost]
         public ActionResult Query(QueryBudgetViewModel queryBudgetViewModel)
         {
-            var start = DateTime.ParseExact( queryBudgetViewModel.Start, "yyyyMMdd", null);
-            var end = DateTime.ParseExact(queryBudgetViewModel.End, "yyyyMMdd", null);
+            var start = queryBudgetViewModel.StartDate();
+            var end = queryBudgetViewModel.EndDate();
             var totalAmount = _budgetService.TotalAmount(start, end);
 
             queryBudgetViewModel.Amount = totalAmount;
