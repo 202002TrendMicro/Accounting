@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,6 +37,11 @@ namespace AccountingWeb.Controllers
         [HttpPost]
         public ActionResult Query(QueryBudgetViewModel queryBudgetViewModel)
         {
+            var start = DateTime.ParseExact( queryBudgetViewModel.Start, "yyyyMMdd", null);
+            var end = DateTime.ParseExact(queryBudgetViewModel.End, "yyyyMMdd", null);
+            var totalAmount = _budgetService.TotalAmount(start, end);
+
+            queryBudgetViewModel.Amount = totalAmount;
             return View(queryBudgetViewModel);
         }
 
