@@ -41,3 +41,10 @@ Scenario: query when period overlapping budget last day
 		| 202003    | 31     |
 	When I query between "20200331" and "20200501"
 	Then the total amount should be 1.00
+
+Scenario: daily amount is 10
+	Given there are budgets
+		| YearMonth | Amount |
+		| 202003    | 310    |
+	When I query between "20200330" and "20200501"
+	Then the total amount should be 20.00

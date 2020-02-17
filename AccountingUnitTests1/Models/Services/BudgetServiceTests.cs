@@ -81,6 +81,16 @@ namespace AccountingUnitTests1.Models.Services
                                 new DateTime(2020, 5, 1));
         }
 
+        [Test()]
+        public void daily_amount_is_10()
+        {
+            GivenBudgets(new Budget() {YearMonth = "202003", Amount = 310});
+
+            TotalAmountShouldBe(20m,
+                                new DateTime(2020, 3, 30),
+                                new DateTime(2020, 5, 1));
+        }
+
         private void GivenBudgets(params Budget[] budgets)
         {
             _budgetRepo.GetAll().ReturnsForAnyArgs(budgets.ToList());
