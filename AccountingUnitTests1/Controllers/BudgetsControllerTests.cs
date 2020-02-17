@@ -1,5 +1,7 @@
-﻿using AccountingWeb.Controllers;
+﻿using System.Web.Mvc;
+using AccountingWeb.Controllers;
 using AccountingWeb.Models.Services;
+using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -23,6 +25,13 @@ namespace AccountingUnitTests1.Controllers
         {
             _budgetsController.CreateBudgets("202003", 31m); 
             _budgetService.Received().Save("202003", 31m);
+        }
+
+        [Test]
+        public void create_a_budget_succeed()
+        {
+            var viewResult = _budgetsController.CreateBudgets("202003", 31m) as ViewResult;
+            (viewResult.ViewBag.Status as string).Should().ContainAll("created", "succeed");
         }
     }
 }
