@@ -95,6 +95,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Controllers\BudgetsControllerTests.cs" />
+    <Compile Include="Models\Services\BudgetServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +108,7 @@
       <Name>AccountingWeb</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
