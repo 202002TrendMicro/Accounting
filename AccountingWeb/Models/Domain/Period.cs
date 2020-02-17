@@ -14,9 +14,8 @@ namespace AccountingWeb.Models.Domain
         public DateTime Start { get; private set; }
         public DateTime End { get; private set; }
 
-        public decimal OverlappingDays(Budget budget)
+        public decimal OverlappingDays(Period another)
         {
-            var another = new Period(budget.FirstDay, budget.LastDay);
             if (Start > another.End || End < another.Start)
             {
                 return 0;
