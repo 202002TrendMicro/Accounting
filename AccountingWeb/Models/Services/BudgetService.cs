@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AccountingWeb.Models.Domain;
 using AccountingWeb.Models.Entities;
@@ -36,17 +37,9 @@ namespace AccountingWeb.Models.Services
 
         public decimal TotalAmount(DateTime start, DateTime end)
         {
-            var budgets = _budgetRepo.GetAll();
-            //if (!budgets.Any()) return 0;
-
             var period = new Period(start, end);
-            var totalAmount = 0m;
-            foreach (var budget in budgets)
-            {
-                totalAmount+= budget.OverlappingAmount(period);
-            }
 
-            return totalAmount; 
+            return _budgetRepo.GetAll().Sum(budget => budget.OverlappingAmount(period));
         }
     }
 }
