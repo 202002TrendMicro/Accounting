@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using AccountingWeb.Controllers;
 using AccountingWeb.Models.Services;
+using AccountingWeb.ViewModels;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -43,6 +45,18 @@ namespace AccountingUnitTests1.Controllers
             StatusShouldContainAll(viewResult, "updated", "succeed");
         }
 
+        [Test]
+        public void query_budget()
+        {
+            _budgetService.TotalAmount(new DateTime(2020, 3, 1), new DateTime(2020, 3, 1))
+                          .ReturnsForAnyArgs(1m);
+
+            var viewResult =
+                _budgetsController.Query(new QueryBudgetViewModel()
+                { Start = "20200301", End = "20200301" }) as ViewResult;
+
+            (viewResult.Model as QueryBudgetViewModel).Amount.Should().Be(1m);
+        }
         private static void StatusShouldContainAll(ViewResult viewResult, params string[] contents)
         {
             (viewResult.ViewBag.Status as string).Should().ContainAll(contents);

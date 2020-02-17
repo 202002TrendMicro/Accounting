@@ -23,5 +23,10 @@ namespace AccountingWeb.Models.Services
                 return isBudgetExisted;
             } 
         }
+
+        public decimal TotalAmount(DateTime start, DateTime end)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
