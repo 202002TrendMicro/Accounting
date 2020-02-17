@@ -137,6 +137,8 @@
     <Compile Include="DataModels\Budget.cs">
       <DependentUpon>AccountingDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PageObjects\CreateBudgetResultPage.cs" />
+    <Compile Include="PageObjects\CreateBudgetsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NUnitSettings.cs" />
     <Compile Include="AtataSettings.cs" />

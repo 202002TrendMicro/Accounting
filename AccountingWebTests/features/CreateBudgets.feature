@@ -8,7 +8,7 @@ Scenario: create a budget
 		| YearMonth | Amount |
 		| 202003    | 31     |
 	When I create
-	Then it should be created successfully
+	Then it should be created succeed
 	And there should be budgets existed
 		| YearMonth | Amount |
 		| 202003    | 31     |
