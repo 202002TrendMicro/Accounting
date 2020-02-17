@@ -1,9 +1,7 @@
-﻿using AccountingWebTests.DataModels;
-using AccountingWebTests.PageObjects;
-using Atata;
+﻿using Atata;
 using TechTalk.SpecFlow;
 
-namespace AccountingWebTests.steps
+namespace AccountingWebTests.Utilities
 {
     [Binding]
     public class AtataSetup
@@ -17,7 +15,7 @@ namespace AccountingWebTests.steps
                          .UseAllNUnitFeatures();
         }
 
-        [BeforeScenario]
+        [BeforeScenario(Order = 0)]
         public static void SetUpScenario()
         {
             AtataContext.Configure().Build();
