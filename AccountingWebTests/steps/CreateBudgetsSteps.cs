@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using AccountingWebTests.DataModels;
 using AccountingWebTests.PageObjects;
+using AccountingWebTests.Utilities;
 using Atata;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -13,6 +14,7 @@ namespace AccountingWebTests.steps
     {
         private static CreateBudgetsPage _createBudgetsPage;
         private CreateBudgetResultPage _createBudgetResultPage;
+        private readonly TableInitialization _tableInitialization = new TableInitialization();
 
         [BeforeScenario]
         public static void SetUpScenario()
@@ -30,17 +32,6 @@ namespace AccountingWebTests.steps
         {
             var budget = table.CreateInstance<Budget>();
             ScenarioContext.Set(budget);
-        }
-
-        [Given(@"there are budgets")]
-        public void GivenThereAreBudgets(Table table)
-        {
-            using (var dbContext = new AccountingEntitiesForTest())
-            {
-                var budgets = table.CreateSet<Budget>();
-                dbContext.Budgets.AddRange(budgets);
-                dbContext.SaveChanges();
-            }
         }
 
         [Then(@"it should be updated succeed")]
