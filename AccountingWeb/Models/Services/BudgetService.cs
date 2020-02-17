@@ -37,11 +37,16 @@ namespace AccountingWeb.Models.Services
         public decimal TotalAmount(DateTime start, DateTime end)
         {
             var budgets = _budgetRepo.GetAll();
-            if (!budgets.Any()) return 0;
+            //if (!budgets.Any()) return 0;
 
-            var budget = budgets.First();
             var period = new Period(start, end);
-            return budget.OverlappingAmount(period);
+            var totalAmount = 0m;
+            foreach (var budget in budgets)
+            {
+                totalAmount+= budget.OverlappingAmount(period);
+            }
+
+            return totalAmount; 
         }
     }
 }
