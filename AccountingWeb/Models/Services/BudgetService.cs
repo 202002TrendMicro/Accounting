@@ -1,4 +1,5 @@
 ﻿using System;
+using AccountingWeb.Models.Entities;
 
 namespace AccountingWeb.Models.Services
 {
@@ -6,7 +7,11 @@ namespace AccountingWeb.Models.Services
     {
         public void Save(string yearMonth, decimal amount)
         {
-            Console.WriteLine("todo");
+            using (var dbContext = new AccountingEntities())
+            {
+                dbContext.Budgets.Add(new Budget() { YearMonth = yearMonth, Amount = amount });
+                dbContext.SaveChanges();
+            } 
         }
     }
 }
