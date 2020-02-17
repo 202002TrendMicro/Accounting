@@ -51,5 +51,10 @@ namespace AccountingWeb.Models.Entities
         {
             return new Period(FirstDay, LastDay);
         }
+
+        public decimal DailyAmount()
+        {
+            return Amount / Days;
+        }
     }
 }
