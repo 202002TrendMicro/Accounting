@@ -118,6 +118,7 @@
     <Compile Include="CheckEnvironment\CheckSpecflowSteps.cs" />
     <Compile Include="CheckEnvironment\OrmTests.cs" />
     <Compile Include="CheckEnvironment\UiTest.cs" />
+    <Compile Include="CreateBudgetsSteps.cs" />
     <Compile Include="DataModels\AccountingDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,6 +151,7 @@
     <None Include="DataModels\AccountingDataModel.edmx.diagram">
       <DependentUpon>AccountingDataModel.edmx</DependentUpon>
     </None>
+    <None Include="features\CreateBudgets.feature" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -157,7 +159,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="features\" />
     <Folder Include="steps\" />
   </ItemGroup>
   <ItemGroup>
