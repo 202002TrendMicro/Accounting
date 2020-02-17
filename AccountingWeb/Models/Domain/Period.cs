@@ -16,13 +16,14 @@ namespace AccountingWeb.Models.Domain
 
         public decimal OverlappingDays(Budget budget)
         {
-            if (Start > budget.LastDay || End < budget.FirstDay)
+            var another = new Period(budget.FirstDay, budget.LastDay);
+            if (Start > another.End || End < another.Start)
             {
                 return 0;
             }
 
-            var overlappingStart = Start > budget.FirstDay ? Start : budget.FirstDay;
-            var overlappingEnd = End < budget.LastDay ? End : budget.LastDay;
+            var overlappingStart = Start > another.Start ? Start : another.Start;
+            var overlappingEnd = End < another.End ? End : another.End;
             return (overlappingEnd - overlappingStart).Days + 1;
         }
     }
