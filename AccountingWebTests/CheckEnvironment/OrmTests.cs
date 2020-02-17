@@ -6,6 +6,7 @@ using NUnit.Framework;
 
 namespace AccountingWebTests.CheckEnvironment
 {
+    [Ignore("no need")]
     [TestFixture]
     public class OrmTests
     {
@@ -21,7 +22,7 @@ namespace AccountingWebTests.CheckEnvironment
         [TearDown]
         public void Setup()
         {
-            using (var dbContext = new AccountingEntities())
+            using (var dbContext = new AccountingEntitiesForTest())
             {
                 dbContext.Budgets.RemoveRange(dbContext.Budgets);
                 dbContext.SaveChanges();
@@ -31,7 +32,7 @@ namespace AccountingWebTests.CheckEnvironment
         [Test]
         public void add_data_and_query_data()
         {
-            using (var dbContext = new AccountingEntities())
+            using (var dbContext = new AccountingEntitiesForTest())
             {
                 var amount = new Random(DateTime.Now.Millisecond).Next(0, 100);
                 dbContext.Budgets.Add(new Budget() {Amount = amount, YearMonth = "202002"});

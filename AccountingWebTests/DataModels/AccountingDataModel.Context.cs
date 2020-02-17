@@ -13,10 +13,10 @@ namespace AccountingWebTests.DataModels
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AccountingEntities : DbContext
+    public partial class AccountingEntitiesForTest : DbContext
     {
-        public AccountingEntities()
-            : base("name=AccountingEntities")
+        public AccountingEntitiesForTest()
+            : base("name=AccountingEntitiesForTest")
         {
         }
     
