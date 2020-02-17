@@ -91,6 +91,20 @@ namespace AccountingUnitTests1.Models.Services
                                 new DateTime(2020, 5, 1));
         }
 
+        [Test()]
+        public void query_budgets_when_multiple_budgets()
+        {
+            GivenBudgets(
+                new Budget() {YearMonth = "202002", Amount = 29},
+                new Budget() {YearMonth = "202003", Amount = 310},
+                new Budget() {YearMonth = "202004", Amount = 3000}
+            );
+
+            TotalAmountShouldBe(912,
+                                new DateTime(2020, 2, 28),
+                                new DateTime(2020, 4, 6));
+        }
+
         private void GivenBudgets(params Budget[] budgets)
         {
             _budgetRepo.GetAll().ReturnsForAnyArgs(budgets.ToList());

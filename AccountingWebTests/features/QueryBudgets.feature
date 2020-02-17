@@ -48,3 +48,12 @@ Scenario: daily amount is 10
 		| 202003    | 310    |
 	When I query between "20200330" and "20200501"
 	Then the total amount should be 20.00
+
+Scenario: multiple budgets
+	Given there are budgets
+		| YearMonth | Amount |
+		| 202002    | 29     |
+		| 202003    | 310    |
+		| 202004    | 3000   |
+	When I query between "20200228" and "20200406"
+	Then the total amount should be 912.00
