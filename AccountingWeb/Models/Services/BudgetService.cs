@@ -36,22 +36,16 @@ namespace AccountingWeb.Models.Services
         public decimal TotalAmount(DateTime start, DateTime end)
         {
             var budgets = _budgetRepo.GetAll();
-            if (budgets.Any())
-            {
-                var budget = budgets.First();
-                if (start > budget.LastDay)
-                {
-                    return 0;
-                }
-                if (end < budget.FirstDay)
-                {
-                    return 0;
-                }
+            if (!budgets.Any()) return 0;
 
-                return (end - start).Days + 1;
+            var budget = budgets.First();
+            if (start > budget.LastDay || end < budget.FirstDay)
+            {
+                return 0;
             }
 
-            return 0;
+            return (end - start).Days + 1;
+
         }
     }
 }
