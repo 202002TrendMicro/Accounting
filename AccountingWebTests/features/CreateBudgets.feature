@@ -12,3 +12,16 @@ Scenario: create a budget
 	And there should be budgets existed
 		| YearMonth | Amount |
 		| 202003    | 31     |
+
+Scenario: update the budget when budget existed
+	Given budget for setting
+		| YearMonth | Amount |
+		| 202003    | 310    |
+	And there are budgets
+		| YearMonth | Amount |
+		| 202003    | 31     |
+	When I create
+	Then it should be updated succeed
+	And there should be budgets existed
+		| YearMonth | Amount |
+		| 202003    | 310    |
