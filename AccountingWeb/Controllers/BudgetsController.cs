@@ -28,6 +28,15 @@ namespace AccountingWeb.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult CreateBudgets(string yearMonth, decimal amount)
+        {
+            var isUpdated = _budgetService.Save(yearMonth, amount);
+            ViewBag.Status = isUpdated ? "budget updated succeed!" : "budget created succeed!";
+
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Query()
         {
@@ -43,15 +52,6 @@ namespace AccountingWeb.Controllers
 
             queryBudgetViewModel.Amount = totalAmount;
             return View(queryBudgetViewModel);
-        }
-
-        [HttpPost]
-        public ActionResult CreateBudgets(string yearMonth, decimal amount)
-        {
-            var isUpdated = _budgetService.Save(yearMonth, amount);
-            ViewBag.Status = isUpdated ? "budget updated succeed!" : "budget created succeed!";
-
-            return View();
         }
     }
 }
