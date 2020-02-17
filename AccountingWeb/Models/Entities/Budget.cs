@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using AccountingWeb.Models.Domain;
+
 namespace AccountingWeb.Models.Entities
 {
     using System;
@@ -32,6 +34,11 @@ namespace AccountingWeb.Models.Entities
                 var daysInMonth = DateTime.DaysInMonth(FirstDay.Year, FirstDay.Month);
                 return DateTime.ParseExact(YearMonth+daysInMonth, "yyyyMMdd", null);
             }
+        }
+
+        public Period CreatePeriod()
+        {
+            return new Period(FirstDay, LastDay);
         }
     }
 }
