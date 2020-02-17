@@ -44,7 +44,8 @@ namespace AccountingWeb.Models.Services
                 return 0;
             }
 
-            return (end - start).Days + 1; 
+            var overlappingStart = start > budget.FirstDay ? start : budget.FirstDay;
+            return (end - overlappingStart).Days + 1; 
         }
     }
 }
