@@ -15,7 +15,7 @@ namespace AccountingWeb.Models.Services
             _budgetRepo = budgetRepo;
         }
 
-        public bool Save(string yearMonth, decimal amount)
+        public void Save(string yearMonth, decimal amount, Action<bool> setStatusCallback)
         {
             using (var dbContext = new AccountingEntities())
             {
@@ -31,7 +31,8 @@ namespace AccountingWeb.Models.Services
                 }
 
                 dbContext.SaveChanges();
-                return isBudgetExisted;
+
+                setStatusCallback(isBudgetExisted); 
             }
         }
 

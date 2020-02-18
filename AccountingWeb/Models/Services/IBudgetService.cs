@@ -4,7 +4,7 @@ namespace AccountingWeb.Models.Services
 {
     public interface IBudgetService
     {
-        bool Save(string yearMonth, decimal amount);
+        void Save(string yearMonth, decimal amount, Action<bool> setStatusCallback);
         decimal TotalAmount(DateTime start, DateTime end);
     }
 }

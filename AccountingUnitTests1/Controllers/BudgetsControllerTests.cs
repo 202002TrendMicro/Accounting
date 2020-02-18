@@ -26,12 +26,13 @@ namespace AccountingUnitTests1.Controllers
         public void create_a_budget_should_invoke_budgetService_save()
         {
             WhenCreateBudget("202003", 31m);
-            _budgetService.Received().Save("202003", 31m);
+            _budgetService.Received().Save("202003", 31m, Arg.Any<Action<bool>>());
         }
 
         [Test]
         public void create_a_budget_succeed()
         {
+            _budgetService.Save("202003", 31m, Arg.InvokeDelegate<Action<bool>>(false));
             var viewResult = WhenCreateBudget("202003", 31m) as ViewResult;
             StatusShouldContainAll(viewResult, "created", "succeed");
         }
@@ -39,8 +40,7 @@ namespace AccountingUnitTests1.Controllers
         [Test]
         public void update_the_budget_when_budget_existed()
         {
-            GivenIsUpdate(true);
-
+            _budgetService.Save("202003", 31m, Arg.InvokeDelegate<Action<bool>>(true));
             var viewResult = WhenCreateBudget("202003", 31m) as ViewResult;
             StatusShouldContainAll(viewResult, "updated", "succeed");
         }
@@ -55,9 +55,9 @@ namespace AccountingUnitTests1.Controllers
             (viewResult.Model as QueryBudgetViewModel).Amount.Should().Be(1m);
         }
 
-        private ViewResult WhenQueryBudget(string start, string end)
+        private static void StatusShouldContainAll(ViewResult viewResult, params string[] contents)
         {
-            return _budgetsController.Query(new QueryBudgetViewModel() {Start = start, End = end}) as ViewResult;
+            (viewResult.ViewBag.Status as string).Should().ContainAll(contents);
         }
 
         private void GivenTotalAmount(decimal totalAmount)
@@ -66,20 +66,14 @@ namespace AccountingUnitTests1.Controllers
                           .ReturnsForAnyArgs(totalAmount);
         }
 
-        private static void StatusShouldContainAll(ViewResult viewResult, params string[] contents)
-        {
-            (viewResult.ViewBag.Status as string).Should().ContainAll(contents);
-        }
-
-        private void GivenIsUpdate(bool isUpdated)
-        {
-            _budgetService.Save(Arg.Any<string>(), Arg.Any<decimal>())
-                          .ReturnsForAnyArgs(isUpdated);
-        }
-
         private ActionResult WhenCreateBudget(string yearMonth, decimal amount)
         {
             return _budgetsController.CreateBudgets(yearMonth, amount);
+        }
+
+        private ViewResult WhenQueryBudget(string start, string end)
+        {
+            return _budgetsController.Query(new QueryBudgetViewModel() { Start = start, End = end }) as ViewResult;
         }
     }
 }
