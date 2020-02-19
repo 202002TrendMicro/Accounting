@@ -198,6 +198,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Budgets\Create.cshtml" />
+    <Content Include="Views\Budgets\CreateBudget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

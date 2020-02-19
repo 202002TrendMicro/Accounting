@@ -1,9 +1,20 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-YearMonth:<input type="text" name="YearMonth"/>
-Amount:<input type="text" name="YearMonth"/>
+@*@using (Html.BeginForm("CreateBudget", "Budgets", FormMethod.Post))
+    {*@
+@*<form action="budgets/CreateBudget" method="post">
+    YearMonth:<input type="text" name="YearMonth" />
+    Amount:<input type="text" name="Amount" />
+
+    <input value="Create" type="submit" />
+</form>*@
+
+@using (Html.BeginForm("CreateBudget", "Budgets", FormMethod.Post))
+{ 
+    <input type="text" name="YearMonth" />
+    <input type="text" name="Amount" /> 
+    <input value="Create" type="submit" />
+}

@@ -13,5 +13,11 @@ namespace AccountingWeb.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult CreateBudget()
+        {
+            return View();
+        }
     }
 }
