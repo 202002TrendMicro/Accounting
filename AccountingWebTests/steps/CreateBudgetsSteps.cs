@@ -46,6 +46,23 @@ namespace AccountingWebTests.steps
             ScenarioContext.Set(budget);
         }
 
+        [Given(@"there are budgets")]
+        public void GivenThereAreBudgets(Table table)
+        {
+            using (var dbContext = new AccountingEntities())
+            {
+                dbContext.Budgets.AddRange(table.CreateSet<Budget>());
+                dbContext.SaveChanges();
+            } 
+        }
+
+        [Then(@"it should updated succeed")]
+        public void ThenItShouldUpdatedSucceed()
+        {
+            _createBudgetResultPage
+                .Status.Should.ContainAll("updated", "succeed"); 
+        }
+
         [When(@"create budget")]
         public void WhenCreateBudget()
         {
@@ -65,8 +82,8 @@ namespace AccountingWebTests.steps
         {
             using (var dbContext = new AccountingEntities())
             {
-                table.CompareToSet(dbContext.Budgets.ToList()); 
-            } 
+                table.CompareToSet(dbContext.Budgets.ToList());
+            }
         }
     }
 }

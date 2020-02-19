@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace AccountingWebTests.steps
 {
+    [Ignore("demo")]
     [TestFixture]
     public class CreateBudgetsTests
     {
