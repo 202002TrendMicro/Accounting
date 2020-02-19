@@ -18,7 +18,7 @@ namespace AccountingWeb.Controllers
         {
             using (var dbContext = new AccountingEntitiesProd())
             {
-                dbContext.Budgets.Add(new Budget() { YearMonth = yearMonth, Amount = amount });
+                dbContext.Budgets.Add(new Budget() {YearMonth = yearMonth, Amount = amount});
                 dbContext.SaveChanges();
             }
 
@@ -32,8 +32,9 @@ namespace AccountingWeb.Controllers
 
         public BudgetsController()
         {
-            _budgetManager = new BudgetManager(); 
+            _budgetManager = new BudgetManager();
         }
+
         public BudgetsController(IBudgetManager budgetManager)
         {
             _budgetManager = budgetManager;
@@ -48,9 +49,16 @@ namespace AccountingWeb.Controllers
         [HttpPost]
         public ActionResult CreateBudget(string yearMonth, decimal amount)
         {
-            _budgetManager.Save(yearMonth, amount);
+            var isUpdated = _budgetManager.Save(yearMonth, amount);
 
-            ViewBag.Status = "budget created succeed";
+            if (isUpdated)
+            {
+                ViewBag.Status = "budget updated succeed";
+            }
+            else
+            {
+                ViewBag.Status = "budget created succeed";
+            }
 
             return View();
         }
