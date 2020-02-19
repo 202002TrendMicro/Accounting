@@ -50,6 +50,8 @@ namespace AccountingWeb.Controllers
         {
             _budgetManager.Save(yearMonth, amount);
 
+            ViewBag.Status = "budget created succeed";
+
             return View();
         }
     }

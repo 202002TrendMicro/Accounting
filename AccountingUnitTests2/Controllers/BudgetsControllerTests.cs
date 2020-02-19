@@ -16,7 +16,7 @@ namespace AccountingUnitTests2.Controllers
             var budgetManager = Substitute.For<IBudgetManager>();
 
             var budgetsController = new BudgetsController(budgetManager);
-            var viewResult = budgetsController.CreateBudget("20200301", 31m) as ViewResult;
+            var viewResult = budgetsController.CreateBudget("202003", 31m) as ViewResult;
             (viewResult.ViewBag.Status as string).Should().ContainAll("created", "succeed");
 
             budgetManager.Received()
