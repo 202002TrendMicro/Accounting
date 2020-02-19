@@ -10,7 +10,14 @@ namespace AccountingWebTests.PageObjects
     {
         public CreateBudgetResultPage Create(Budget budget)
         {
-            throw new System.NotImplementedException();
+            return this
+                   .YearMonth.Set(budget.YearMonth)
+                   .Amount.Set(budget.Amount)
+                   .CreateBudget.ClickAndGo();
         }
+
+        [FindByValue("Create")] public Button<CreateBudgetResultPage, _> CreateBudget { get; set; }
+        [FindByName("Amount")] public NumberInput<_> Amount { get; set; }
+        [FindByName("YearMonth")] public TextInput<_> YearMonth { get; set; }
     }
 }
