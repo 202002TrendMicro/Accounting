@@ -25,6 +25,11 @@ namespace AccountingWebTests.steps
                         .UseAssertionExceptionType<NUnit.Framework.AssertionException>()
                         .UseNUnitAggregateAssertionStrategy().Build();
 
+            using (var dbContext = new AccountingEntities())
+            {
+                dbContext.Database.ExecuteSqlCommand("TRUNCATE TABLE [Budgets]");
+            }
+
             _createBudgetPage = Go.To<CreateBudgetPage>();
         }
 
