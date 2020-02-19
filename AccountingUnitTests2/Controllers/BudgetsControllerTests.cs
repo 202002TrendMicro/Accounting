@@ -29,6 +29,16 @@ namespace AccountingUnitTests2.Controllers
             BudgetManagerShouldSave("202003", 31m);
         }
 
+        [Test()]
+        public void update_budget()
+        {
+            _budgetManager.Save("202003", 31m)
+                          .ReturnsForAnyArgs(true);
+
+            var viewResult = WhenCreateBudget("202003", 31m);
+            StatusShouldContains(viewResult, "updated", "succeed");
+        }
+
         private static void StatusShouldContains(ViewResult viewResult, params string[] status)
         {
             (viewResult.ViewBag.Status as string).Should().ContainAll(status);
