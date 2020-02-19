@@ -142,6 +142,7 @@
     <Compile Include="NUnitSettings.cs" />
     <Compile Include="AtataSettings.cs" />
     <Compile Include="steps\CreateBudgetsSteps.cs" />
+    <Compile Include="steps\CreateBudgetsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
