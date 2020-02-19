@@ -10,17 +10,39 @@ namespace AccountingUnitTests2.Controllers
     [TestFixture()]
     public class BudgetsControllerTests
     {
+        private IBudgetManager _budgetManager;
+        private BudgetsController _budgetsController;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _budgetManager = Substitute.For<IBudgetManager>();
+            _budgetsController = new BudgetsController(_budgetManager);
+        }
+
         [Test()]
         public void create_a_budget()
         {
-            var budgetManager = Substitute.For<IBudgetManager>();
+            var viewResult = WhenCreateBudget("202003", 31m);
+            StatusShouldContains(viewResult, "created", "succeed");
 
-            var budgetsController = new BudgetsController(budgetManager);
-            var viewResult = budgetsController.CreateBudget("202003", 31m) as ViewResult;
-            (viewResult.ViewBag.Status as string).Should().ContainAll("created", "succeed");
+            BudgetManagerShouldSave("202003", 31m);
+        }
 
-            budgetManager.Received()
-                         .Save("202003", 31m);
+        private static void StatusShouldContains(ViewResult viewResult, params string[] status)
+        {
+            (viewResult.ViewBag.Status as string).Should().ContainAll(status);
+        }
+
+        private void BudgetManagerShouldSave(string yearMonth, decimal amount)
+        {
+            _budgetManager.Received()
+                          .Save(yearMonth, amount);
+        }
+
+        private ViewResult WhenCreateBudget(string yearMonth, decimal amount)
+        {
+            return _budgetsController.CreateBudget(yearMonth, amount) as ViewResult;
         }
     }
 }
