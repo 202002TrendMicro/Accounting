@@ -178,6 +178,7 @@
     <Compile Include="Models\DataModels\Budget.cs">
       <DependentUpon>AccountingEntititesProd.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Domain\BudgetManager.cs" />
     <Compile Include="Models\Domain\IBudgetManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
