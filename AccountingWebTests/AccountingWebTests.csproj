@@ -118,23 +118,23 @@
     <Compile Include="CheckEnvironment\CheckSpecflowSteps.cs" />
     <Compile Include="CheckEnvironment\OrmTests.cs" />
     <Compile Include="CheckEnvironment\UiTest.cs" />
-    <Compile Include="DataModels\AccountingDataModel.Context.cs">
+    <Compile Include="DataModels\AccountingModelForTest.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountingDataModel.Context.tt</DependentUpon>
+      <DependentUpon>AccountingModelForTest.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModels\AccountingDataModel.cs">
+    <Compile Include="DataModels\AccountingModelForTest.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountingDataModel.tt</DependentUpon>
+      <DependentUpon>AccountingModelForTest.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModels\AccountingDataModel.Designer.cs">
+    <Compile Include="DataModels\AccountingModelForTest.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountingDataModel.edmx</DependentUpon>
+      <DependentUpon>AccountingModelForTest.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataModels\Budget.cs">
-      <DependentUpon>AccountingDataModel.tt</DependentUpon>
+      <DependentUpon>AccountingModelForTest.tt</DependentUpon>
     </Compile>
     <Compile Include="PageObjects\CreateBudgetPage.cs" />
     <Compile Include="PageObjects\CreateBudgetResultPage.cs" />
@@ -146,13 +146,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EntityDeploy Include="DataModels\AccountingDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AccountingDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="CheckEnvironment\CheckSpecflow.feature" />
-    <None Include="DataModels\AccountingDataModel.edmx.diagram">
-      <DependentUpon>AccountingDataModel.edmx</DependentUpon>
+    <EntityDeploy Include="DataModels\AccountingModelForTest.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AccountingModelForTest.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataModels\AccountingModelForTest.edmx.diagram">
+      <DependentUpon>AccountingModelForTest.edmx</DependentUpon>
     </None>
     <None Include="features\CreateBudgets.feature" />
     <None Include="packages.config" />
@@ -161,17 +161,22 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="DataModels\AccountingDataModel.Context.tt">
+    <ProjectReference Include="..\AccountingWeb\AccountingWeb.csproj">
+      <Project>{A8D9D242-2F33-412C-8300-6EDD1AB8EA36}</Project>
+      <Name>AccountingWeb</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataModels\AccountingModelForTest.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AccountingDataModel.Context.cs</LastGenOutput>
-      <DependentUpon>AccountingDataModel.edmx</DependentUpon>
+      <DependentUpon>AccountingModelForTest.edmx</DependentUpon>
+      <LastGenOutput>AccountingModelForTest.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataModels\AccountingDataModel.tt">
+    <Content Include="DataModels\AccountingModelForTest.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AccountingDataModel.edmx</DependentUpon>
-      <LastGenOutput>AccountingDataModel.cs</LastGenOutput>
+      <DependentUpon>AccountingModelForTest.edmx</DependentUpon>
+      <LastGenOutput>AccountingModelForTest.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

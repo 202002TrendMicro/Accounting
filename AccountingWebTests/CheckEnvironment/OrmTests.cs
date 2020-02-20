@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using AccountingWeb.Models.DataModels;
 using AccountingWebTests.DataModels;
 using ExpectedObjects;
 using NUnit.Framework;
+using Budget = AccountingWebTests.DataModels.Budget;
 
 namespace AccountingWebTests.CheckEnvironment
 {
@@ -21,7 +23,7 @@ namespace AccountingWebTests.CheckEnvironment
         [TearDown]
         public void Setup()
         {
-            using (var dbContext = new AccountingEntities())
+            using (var dbContext = new NorthwindEntitiesForTest())
             {
                 dbContext.Budgets.RemoveRange(dbContext.Budgets);
                 dbContext.SaveChanges();
@@ -31,7 +33,7 @@ namespace AccountingWebTests.CheckEnvironment
         [Test]
         public void add_data_and_query_data()
         {
-            using (var dbContext = new AccountingEntities())
+            using (var dbContext = new NorthwindEntitiesForTest())
             {
                 var amount = new Random(DateTime.Now.Millisecond).Next(0, 100);
                 dbContext.Budgets.Add(new Budget() {Amount = amount, YearMonth = "202002"});

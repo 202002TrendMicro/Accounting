@@ -5,6 +5,7 @@ using AccountingWebTests.PageObjects;
 using Atata;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using Budget = AccountingWebTests.DataModels.Budget;
 
 namespace AccountingWebTests.steps
 {
@@ -25,7 +26,7 @@ namespace AccountingWebTests.steps
                         .UseAssertionExceptionType<NUnit.Framework.AssertionException>()
                         .UseNUnitAggregateAssertionStrategy().Build();
 
-            using (var dbContext = new AccountingEntities())
+            using (var dbContext = new NorthwindEntitiesForTest())
             {
                 dbContext.Database.ExecuteSqlCommand("TRUNCATE TABLE [Budgets]");
             }
@@ -49,7 +50,7 @@ namespace AccountingWebTests.steps
         [Given(@"there are budgets")]
         public void GivenThereAreBudgets(Table table)
         {
-            using (var dbContext = new AccountingEntities())
+            using (var dbContext = new NorthwindEntitiesForTest())
             {
                 dbContext.Budgets.AddRange(table.CreateSet<Budget>());
                 dbContext.SaveChanges();
@@ -80,7 +81,7 @@ namespace AccountingWebTests.steps
         [Then(@"there are budgets")]
         public void ThenThereAreBudgets(Table table)
         {
-            using (var dbContext = new AccountingEntities())
+            using (var dbContext = new NorthwindEntitiesForTest())
             {
                 table.CompareToSet(dbContext.Budgets.ToList());
             }

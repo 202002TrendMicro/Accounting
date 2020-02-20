@@ -160,33 +160,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModels\AccountingEntititesProd.Context.cs">
+    <Compile Include="Models\DataModels\AccountingModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountingEntititesProd.Context.tt</DependentUpon>
+      <DependentUpon>AccountingModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModels\AccountingEntititesProd.cs">
+    <Compile Include="Models\DataModels\AccountingModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountingEntititesProd.tt</DependentUpon>
+      <DependentUpon>AccountingModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModels\AccountingEntititesProd.Designer.cs">
+    <Compile Include="Models\DataModels\AccountingModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AccountingEntititesProd.edmx</DependentUpon>
+      <DependentUpon>AccountingModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DataModels\Budget.cs">
-      <DependentUpon>AccountingEntititesProd.tt</DependentUpon>
+      <DependentUpon>AccountingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Domain\BudgetManager.cs" />
     <Compile Include="Models\Domain\IBudgetManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Accounting.mdf" />
-    <Content Include="App_Data\Accounting_log.ldf">
-      <DependentUpon>Accounting.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -195,27 +191,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\DataModels\AccountingEntititesProd.Context.tt">
+    <Content Include="Models\DataModels\AccountingModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AccountingEntititesProd.Context.cs</LastGenOutput>
-      <DependentUpon>AccountingEntititesProd.edmx</DependentUpon>
+      <DependentUpon>AccountingModel.edmx</DependentUpon>
+      <LastGenOutput>AccountingModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DataModels\AccountingEntititesProd.tt">
+    <Content Include="Models\DataModels\AccountingModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AccountingEntititesProd.edmx</DependentUpon>
-      <LastGenOutput>AccountingEntititesProd.cs</LastGenOutput>
+      <DependentUpon>AccountingModel.edmx</DependentUpon>
+      <LastGenOutput>AccountingModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\DataModels\AccountingEntititesProd.edmx">
+    <EntityDeploy Include="Models\DataModels\AccountingModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AccountingEntititesProd.Designer.cs</LastGenOutput>
+      <LastGenOutput>AccountingModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DataModels\AccountingEntititesProd.edmx.diagram">
-      <DependentUpon>AccountingEntititesProd.edmx</DependentUpon>
+    <Content Include="Models\DataModels\AccountingModel.edmx.diagram">
+      <DependentUpon>AccountingModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -245,7 +241,9 @@
     <Content Include="Views\Budgets\Create.cshtml" />
     <Content Include="Views\Budgets\CreateBudget.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

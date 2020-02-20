@@ -22,7 +22,7 @@ namespace AccountingWebTests.steps
                         .UseAssertionExceptionType<NUnit.Framework.AssertionException>()
                         .UseNUnitAggregateAssertionStrategy().Build();
 
-            using (var dbContext = new AccountingEntities())
+            using (var dbContext = new NorthwindEntitiesForTest())
             {
                 dbContext.Database.ExecuteSqlCommand("TRUNCATE TABLE [Budgets]");
             }

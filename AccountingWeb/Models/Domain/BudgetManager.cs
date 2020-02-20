@@ -10,7 +10,7 @@ namespace AccountingWeb.Models.Domain
 
         public bool Save(string yearMonth, decimal amount)
         {
-            using (var dbContext = new AccountingEntitiesProd())
+            using (var dbContext = new AccountingEntities())
             {
                 var budget = dbContext.Budgets.Find(yearMonth);
 
@@ -21,13 +21,12 @@ namespace AccountingWeb.Models.Domain
                 }
                 else
                 {
-                    dbContext.Budgets.Add(new Budget() { YearMonth = yearMonth, Amount = amount });
-                } 
+                    dbContext.Budgets.Add(new Budget() {YearMonth = yearMonth, Amount = amount});
+                }
 
                 dbContext.SaveChanges();
                 return isBudgetExisted;
             }
-
         }
     }
 }
