@@ -40,7 +40,7 @@ namespace AccountingWebTests.steps
         public void create_a_budget()
         {
             _createBudgetPage
-                .Create(new Budget() {YearMonth = "202003", Amount = 31m})
+                .Create(new Budget() {YearMonth = "202003", Amount = 31})
                 .Status.Should.ContainAll("created", "succeed");
         }
     }

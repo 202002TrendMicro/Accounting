@@ -6,7 +6,6 @@ using NUnit.Framework;
 
 namespace AccountingWebTests.CheckEnvironment
 {
-    [Ignore("no need")]
     [TestFixture]
     public class OrmTests
     {
