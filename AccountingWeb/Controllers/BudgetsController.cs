@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AccountingWeb.Models.Domain;
+using AccountingWeb.ViewModels;
 
 namespace AccountingWeb.Controllers
 {
@@ -43,5 +44,17 @@ namespace AccountingWeb.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Query()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Query(QueryBudgetViewModel queryBudgetViewModel)
+        {
+            return View(queryBudgetViewModel);
+        } 
     }
 }
