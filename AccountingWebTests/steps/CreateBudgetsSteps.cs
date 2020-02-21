@@ -10,6 +10,7 @@ using Budget = AccountingWebTests.DataModels.Budget;
 namespace AccountingWebTests.steps
 {
     [Binding]
+    [Scope(Feature = "CreateBudgets")]
     public class CreateBudgetsSteps : Steps
     {
         private CreateBudgetPage _createBudgetPage;
